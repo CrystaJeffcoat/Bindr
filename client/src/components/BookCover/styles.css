@@ -1,0 +1,10 @@
+.book-cover {
+    display: flex;
+    justify-content: center;
+}
+
+.book {
+    border-radius: 5px;
+    border: 2px solid #000;
+    height: 560px;
+}
