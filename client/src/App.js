@@ -1,5 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Container } from '@material-ui/core';
+import AppNav from './components/AppNav';
+
 import Books from './pages/Books';
 import Detail from './pages/Detail';
 import NoMatch from './pages/NoMatch';
@@ -9,8 +12,8 @@ import AppFrame from './pages/AppFrame';
 function App() {
     return (
         <Router>
-            <div>
-                <Nav />
+            <Container maxWidth="sm">
+                <AppNav />
                 <Switch>
                     <Route exact path={['/', '/books']}>
                         <AppFrame />
@@ -22,7 +25,7 @@ function App() {
                         <NoMatch />
                     </Route>
                 </Switch>
-            </div>
+            </Container>
         </Router>
     );
 }
