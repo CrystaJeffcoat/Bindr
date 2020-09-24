@@ -1,0 +1,9 @@
+.select-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.formControl {
+    margin: 20px;
+    width: 320px;
+}
