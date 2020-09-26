@@ -18,6 +18,7 @@ const AppFrame = ({ ...props }) => {
     const [genre, setGenre] = useState('');
     const [genreList, setGenreList] = useState([]);
     const [activeBook, setActiveBook] = useState(0);
+    const [maxCount, setMaxCount] = useState(0);
 
     useEffect(() => {
         getGenre();
@@ -46,7 +47,9 @@ const AppFrame = ({ ...props }) => {
         try {
             var response = await API.getBooks(genre);
             setBooks(response.data.results.books);
+            setMaxCount(response.data.num_results);
             setLoading(false);
+
         } catch (error) {
             console.error(error);
         }
@@ -62,6 +65,7 @@ const AppFrame = ({ ...props }) => {
     };
 
     console.log('books', books);
+    console.log(maxCount);
     console.log('genre', genre);
     return (
         !loading && (
@@ -70,7 +74,7 @@ const AppFrame = ({ ...props }) => {
 
                 <GenreSelect selectOptions={genreList} setGenre={(value) => setGenre(value)} />
 
-                <LikeDislike onHandleLike={handleBack} onHandleNext={handleNext} />
+                <LikeDislike onHandleLike={handleBack} onHandleNext={handleNext} disabled={activeBook===(maxCount-1)}/>
             </div>
         )
     );
