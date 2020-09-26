@@ -1,31 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Container } from '@material-ui/core';
+import { StylesProvider } from '@material-ui/core/styles';
+
 import AppNav from './components/AppNav';
-
-import Books from './pages/Books';
-import Detail from './pages/Detail';
-import NoMatch from './pages/NoMatch';
-import Nav from './components/Nav';
 import AppFrame from './pages/AppFrame';
-
+import SavedBooks from './pages/SavedBooks';
 function App() {
     return (
         <Router>
-            <Container maxWidth="sm">
-                <AppNav />
-                <Switch>
-                    <Route exact path={['/', '/books']}>
-                        <AppFrame />
-                    </Route>
-                    <Route exact path="/books/:id">
-                        <Detail />
-                    </Route>
-                    <Route>
-                        <NoMatch />
-                    </Route>
-                </Switch>
-            </Container>
+            <StylesProvider injectFirst>
+                <Container maxWidth="xs" disableGutters={true}>
+                    <AppNav />
+                    <Switch>
+                        <Route exact path={'/'}>
+                            <AppFrame />
+                        </Route>
+                        <Route exact path="/saved">
+                            <SavedBooks />
+                        </Route>
+                    </Switch>
+                </Container>
+            </StylesProvider>
         </Router>
     );
 }
