@@ -7,6 +7,6 @@ const userSchema = new Schema({
   books: Array // array of objects of saved books
 });
 
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model("users", userSchema);
 
 module.exports = User;
