@@ -5,8 +5,7 @@ import { DoneOutline } from '@material-ui/icons';
 import { ReactComponent as ClearIcon } from './clear.svg';
 import './styles.css';
 
-const LikeDislike = ({ onHandleLike, onHandleNext, disabled, ...props }) => {
-    console.log(disabled);
+const LikeDislike = ({ onHandleSave, onHandleNext, disabled, ...props }) => {
     return (
         <div className="button-container">
             <IconButton
@@ -16,7 +15,7 @@ const LikeDislike = ({ onHandleLike, onHandleNext, disabled, ...props }) => {
                 color={'primary'}>
                 <SvgIcon htmlColor="#000" component={ClearIcon} viewBox="0 0 24 24" />
             </IconButton>
-            <IconButton className="fab-button" onClick={onHandleLike}>
+            <IconButton className="fab-button" onClick={onHandleSave}>
                 <DoneOutline className="fab-icon" />
             </IconButton>
         </div>

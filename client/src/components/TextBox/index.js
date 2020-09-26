@@ -1,32 +1,26 @@
 import React from 'react';
-import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
+import { Card, CardContent, Typography, IconButton } from '@material-ui/core';
+import { CancelOutlined } from '@material-ui/icons';
 import './styles.css';
 
-function TextBox({ ...props }) {
+function TextBox({ bookDetails, genre, removeButton = false, ...props }) {
     const bull = <span className={'bullet'}>•</span>;
+    console.log(bookDetails);
+    return bookDetails ? (
+        <Card className={'card-root'} variant="outlined">
+            <CardContent className="card-content">
+                <div className="card-header">
+                    <div className="title">{bookDetails.title}</div>
+                    <Typography className="genre-label" noWrap>
+                        {genre}
+                    </Typography>
+                </div>
+                <div className={'author'}>by {bookDetails.author}</div>
 
-    return (
-        <Card className={'root'}>
-            <CardContent>
-                <Typography className={'title'} color="textSecondary" gutterBottom>
-                    Word of the Day
-                </Typography>
-                <Typography variant="h5" component="h2">
-                    be{bull}nev{bull}o{bull}lent
-                </Typography>
-                <Typography className={'pos'} color="textSecondary">
-                    adjective
-                </Typography>
-                <Typography variant="body2" component="p">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
-                </Typography>
+                <div className="body">{bookDetails.description}</div>
             </CardContent>
-            <CardActions>
-                <Button size="small">Learn More</Button>
-            </CardActions>
+            {removeButton ? <CancelOutlined className="remove-card-button" /> : null}
         </Card>
-    );
+    ) : null;
 }
 export default TextBox;

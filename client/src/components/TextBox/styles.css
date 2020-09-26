@@ -1,15 +1,55 @@
-.root {
+.card-root {
+    position: relative;
     width: 100%;
+    border: 3px solid #212121;
+    border-radius: 7px;
+    margin-bottom: 25px;
+    min-height: 150px;
 }
-
-.bullet {
-    display: 'inline-block';
-    margin: '0 2px';
-    transform: 'scale(0.8)';
+.card-content {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+.card-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.genre-label,
+.title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 5px 0;
 }
 .title {
-    font-size: 14px;
+    width: 70%;
 }
-.pos {
+
+.genre-label {
+    width: 100px;
+}
+
+.author {
+    font-size: 16px;
     margin-bottom: 12px;
+    color: #000000de;
+}
+
+.body {
+    margin: 20px 0;
+}
+
+.remove-card-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.remove-card-button:active,
+.remove-card-button:hover {
+    opacity: 0.5;
 }

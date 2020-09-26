@@ -11,7 +11,8 @@ const AppFrame = ({ ...props }) => {
     const [books, setBooks] = useState([]);
     const [genre, setGenre] = useState('');
     const [genreList, setGenreList] = useState([]);
-    const [activeBook, setActiveBook] = useState(0);
+    const [activeBook, setActiveBook] = useState('');
+    const [activeBookIndex, setActiveBookIndex] = useState(0);
     const [maxCount, setMaxCount] = useState(0);
 
     useEffect(() => {
@@ -50,29 +51,28 @@ const AppFrame = ({ ...props }) => {
     }
 
     const handleNext = () => {
-        setActiveBook((prevActiveBook) => prevActiveBook + 1);
+        setActiveBookIndex((prevActiveBookIndex) => prevActiveBookIndex + 1);
+        setActiveBook(books[activeBookIndex]);
     };
 
-    const handleBack = () => {
-        setActiveBook((prevActiveBook) => prevActiveBook - 1);
+    const handleSaveBook = (book) => {
+        // Write logic to connect with API for saving book to library
+        console.log(`Just added ${activeBook.title} to favorite`);
     };
 
-    console.log('books', books);
-    console.log(maxCount);
-    console.log('genre', genre);
     return (
         !loading && (
             <div>
-                <BookCover image={books.length > 0 ? books[activeBook].book_image : null} />
+                <BookCover image={books.length > 0 ? books[activeBookIndex].book_image : null} />
 
                 <GenreSelect selectOptions={genreList} setGenre={(value) => setGenre(value)} />
 
                 <LikeDislike
-                    onHandleLike={handleBack}
+                    onHandleSave={handleSaveBook}
                     onHandleNext={handleNext}
-                    disabled={activeBook === maxCount - 1}
+                    disabled={activeBookIndex === maxCount - 1}
                 />
-                <TextBox bookDetails={books[activeBook]} />
+                <TextBox bookDetails={books[activeBookIndex]} genre={genre} />
             </div>
         )
     );
