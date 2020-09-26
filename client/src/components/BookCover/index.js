@@ -7,7 +7,7 @@ const BookCover = ({ image, ...props }) => {
     return (
         <div className="root">
             <div className="book-cover">
-                <img className="book" src={image} />
+                <img className="book" src={image} alt="book-cover" />
             </div>
         </div>
     );

@@ -9,10 +9,14 @@ const LikeDislike = ({ onHandleLike, onHandleNext, disabled, ...props }) => {
     console.log(disabled);
     return (
         <div className="button-container">
-            <IconButton className="fab-button " onClick={onHandleNext} disabled={disabled}>
-                <SvgIcon component={ClearIcon} viewBox="0 0 24 24" />
+            <IconButton
+                classes={{ root: 'fab-button ', disabled: 'fab-disabled' }}
+                onClick={onHandleNext}
+                disabled={disabled}
+                color={'primary'}>
+                <SvgIcon htmlColor="#000" component={ClearIcon} viewBox="0 0 24 24" />
             </IconButton>
-            <IconButton className="fab-button" onClick={onHandleLike} color="primary" aria-label="add">
+            <IconButton className="fab-button" onClick={onHandleLike}>
                 <DoneOutline className="fab-icon" />
             </IconButton>
         </div>

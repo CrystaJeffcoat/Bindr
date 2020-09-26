@@ -1,6 +1,7 @@
 .button-container {
     display: flex;
     justify-content: center;
+    margin-bottom: 25px;
 }
 
 .fab-button {
@@ -12,4 +13,8 @@
 
 .fab-icon {
     color: #000;
+}
+
+.fab-disabled {
+    opacity: 0.4;
 }

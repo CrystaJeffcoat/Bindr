@@ -1,18 +1,12 @@
 // React
 import React, { useState, useEffect } from 'react';
 import API from '../utils/API';
-import { makeStyles } from '@material-ui/core/styles';
 import BookCover from '../components/BookCover';
 import GenreSelect from '../components/GenreSelect';
 import LikeDislike from '../components/LikeDislike';
-const useStyles = makeStyles((theme) => ({
-    root: {
-        padding: 20,
-    },
-}));
-const AppFrame = ({ ...props }) => {
-    const classes = useStyles();
+import TextBox from '../components/TextBox';
 
+const AppFrame = ({ ...props }) => {
     const [loading, setLoading] = useState(false);
     const [books, setBooks] = useState([]);
     const [genre, setGenre] = useState('');
@@ -26,7 +20,7 @@ const AppFrame = ({ ...props }) => {
 
     useEffect(() => {
         // On first render we don't call for books until user selects genre
-        if (genreList.length > 0) {
+        if (genreList.length > 0 && genre) {
             getBooks();
         }
     }, [genre, genreList]);
@@ -49,7 +43,6 @@ const AppFrame = ({ ...props }) => {
             setBooks(response.data.results.books);
             setMaxCount(response.data.num_results);
             setLoading(false);
-
         } catch (error) {
             console.error(error);
         }
@@ -69,12 +62,17 @@ const AppFrame = ({ ...props }) => {
     console.log('genre', genre);
     return (
         !loading && (
-            <div className={classes.root}>
+            <div>
                 <BookCover image={books.length > 0 ? books[activeBook].book_image : null} />
 
                 <GenreSelect selectOptions={genreList} setGenre={(value) => setGenre(value)} />
 
-                <LikeDislike onHandleLike={handleBack} onHandleNext={handleNext} disabled={activeBook===(maxCount-1)}/>
+                <LikeDislike
+                    onHandleLike={handleBack}
+                    onHandleNext={handleNext}
+                    disabled={activeBook === maxCount - 1}
+                />
+                <TextBox bookDetails={books[activeBook]} />
             </div>
         )
     );

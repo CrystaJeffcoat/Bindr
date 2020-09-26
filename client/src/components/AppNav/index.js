@@ -1,18 +1,20 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Typography, Container } from '@material-ui/core';
 import { Book, LibraryBooks } from '@material-ui/icons';
 import './styles.css';
 
 const AppNav = ({ classes, ...props }) => {
+    // useHistory hook gives you access to the history
+    // https://reactrouter.com/web/api/Hooks/usehistory
     let history = useHistory();
 
     function handleClick(path) {
         history.push(path);
     }
     return (
-        <div className={''}>
+        <Container fixed maxWidth="xs" disableGutters={true}>
             <AppBar position="static">
                 <Toolbar className="toolbar">
                     <IconButton onClick={(e) => handleClick('/')} edge="start" color="inherit" aria-label="menu">
@@ -24,7 +26,7 @@ const AppNav = ({ classes, ...props }) => {
                     </IconButton>
                 </Toolbar>
             </AppBar>
-        </div>
+        </Container>
     );
 };
 
