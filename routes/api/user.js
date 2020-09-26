@@ -1,15 +1,32 @@
 const router = require("express").Router();
-//const userController = require("../../controllers/userController");
+// const userController = require("../../controllers/userController");
+const User = require("../../models/user");
 
-// Matches with "/api/user/favorites"
-router.post("/favorites", function(req, res) {
-  res.send("<p>hello</>")
-  
-})
+// Matches with "/api/user/"
+router.get('/', function({ body }, res) {
+  User.find({
+    username: body.username,
+    password: body.password
+  })
+  .then(data => {
+    if(!data.length) res.json("username doesnt exist");
+    else {
+      res.json(data);
+    };
+  })
+  .catch(err => res.status(400).json(err));
+});
 
-router.get("/favorites", function(req, res) {
-  console.log(req.body)
+router.post("/add", function(req, res) {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  const newUser = new User({username, password})
+
+  newUser.save()
+    .then(() => res.json('User added!'))
+    .catch(err => res.status(400).json(err));
   
-})
+});
 
 module.exports = router;
