@@ -56,8 +56,10 @@ const AppFrame = ({ ...props }) => {
     };
 
     const handleSaveBook = (book) => {
-        // Write logic to connect with API for saving book to library
-        console.log(`Just added ${activeBook.title} to favorite`);
+      setActiveBookIndex((prevActiveBookIndex) => prevActiveBookIndex + 1);
+      setActiveBook(books[activeBookIndex]);
+      // Write logic to connect with API for saving book to library
+      console.log(`Just added ${activeBook.title} to favorite`);
     };
 
     return (
