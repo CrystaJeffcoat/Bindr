@@ -1,8 +1,20 @@
-.select-container {
+.button-container {
     display: flex;
     justify-content: center;
-    padding: 20px;
+    margin-bottom: 25px;
 }
 
-.fab {
+.fab-button {
+    width: 75px;
+    height: 75px;
+    margin: 0 20px;
+    border: 3px solid #000;
+}
+
+.fab-icon {
+    color: #000;
+}
+
+.fab-disabled {
+    opacity: 0.4;
 }
