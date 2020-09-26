@@ -17,7 +17,7 @@ const AppNav = ({ classes, ...props }) => {
         <Container fixed maxWidth="xs" disableGutters={true}>
             <AppBar position="static">
                 <Toolbar className="toolbar">
-                    <IconButton onClick={(e) => handleClick('/')} edge="start" color="inherit" aria-label="menu">
+                    <IconButton onClick={(e) => handleClick('/home')} edge="start" color="inherit" aria-label="menu">
                         <Book />
                     </IconButton>
                     <Typography variant="h6">Bindr</Typography>

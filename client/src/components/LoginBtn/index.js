@@ -11,7 +11,7 @@ function LoginBtn() {
     //if(user exists).then(history.push("/books"))
 
     event.preventDefault();
-    history.push("/books");
+    history.push("/home");
   }
   const classes = makeStyles((theme) => ({
     submit: {
