@@ -1,18 +1,23 @@
 // React
 import React from 'react';
-import { Fab, SvgIcon } from '@material-ui/core';
+import { IconButton, SvgIcon } from '@material-ui/core';
 import { DoneOutline } from '@material-ui/icons';
-import './styles.css';
 import { ReactComponent as ClearIcon } from './clear.svg';
-const LikeDislike = ({ ...props }) => {
+import './styles.css';
+
+const LikeDislike = ({ onHandleSave, onHandleNext, disabled, ...props }) => {
     return (
-        <div className="select-container">
-            <Fab color="primary" aria-label="add">
-                <SvgIcon component={ClearIcon} viewBox="0 0 24 24" color="#fff" />
-            </Fab>
-            <Fab color="secondary" aria-label="add">
-                <DoneOutline />
-            </Fab>
+        <div className="button-container">
+            <IconButton
+                classes={{ root: 'fab-button ', disabled: 'fab-disabled' }}
+                onClick={onHandleNext}
+                disabled={disabled}
+                color={'primary'}>
+                <SvgIcon htmlColor="#000" component={ClearIcon} viewBox="0 0 24 24" />
+            </IconButton>
+            <IconButton className="fab-button" onClick={onHandleSave}>
+                <DoneOutline className="fab-icon" />
+            </IconButton>
         </div>
     );
 };
