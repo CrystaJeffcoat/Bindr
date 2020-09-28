@@ -3,15 +3,28 @@ import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-function LoginBtn() {
+function LoginBtn(props) {
   let history = useHistory();
+  let username = props.userName;
+  let password = props.password;
 
   function handleFormSubmit(event) {
-    // can insert user validation
-    //if(user exists).then(history.push("/books"))
-
     event.preventDefault();
-    history.push("/books");
+    fetch("/", {
+      method: "put", //cannot be a get request with body
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    }).then(function (response) {
+      return response.json();
+    });
+
+    // method: get cannot have "body"
+    // should use axios/API.getUser ?
+    // what do we want this to actually send the user to?
+
+    history.push("/home");
   }
   const classes = makeStyles((theme) => ({
     submit: {
