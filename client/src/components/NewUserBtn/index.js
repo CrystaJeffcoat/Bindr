@@ -3,15 +3,15 @@ import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-function LoginBtn(props) {
+function NewUserBtn(props) {
   let history = useHistory();
   let username = props.userName;
   let password = props.password;
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    fetch("/", {
-      method: "put", //cannot be a get request with body
+    fetch("/add", {
+      method: "post",
       body: JSON.stringify({
         username,
         password,
@@ -20,9 +20,9 @@ function LoginBtn(props) {
       return response.json();
     });
 
-    // method: get cannot have "body"
-    // should use axios/API.getUser ?
-    // what do we want this to actually send the user to?
+    //fetch("/api/user/favorites").then(function (response) {
+    //history.push("/home");
+    // });
 
     history.push("/home");
   }
@@ -41,9 +41,9 @@ function LoginBtn(props) {
       className={classes.submit}
       onClick={handleFormSubmit}
     >
-      Sign In
+      Create New User
     </Button>
   );
 }
 
-export default LoginBtn;
+export default NewUserBtn;

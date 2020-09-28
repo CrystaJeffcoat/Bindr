@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import LoginBtn from "../LoginBtn";
+import NewUserBtn from "../NewUserBtn";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -28,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
 function LoginForm() {
   const classes = useStyles();
 
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -50,23 +54,29 @@ function LoginForm() {
             margin="normal"
             required
             fullWidth
+            value={userName}
             id="username"
             label="Username"
             name="username"
-            autoFocustype="text"
+            autofocustype="text"
+            onChange={(e) => setUserName(e.target.value)}
           ></TextField>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
+            value={password}
             name="password"
             label="Password"
             type="password"
             id="password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </form>
-        <LoginBtn />
+        <LoginBtn userName={userName} password={password} />
+        <br></br>
+        <NewUserBtn userName={userName} password={password} />
       </div>
     </Container>
   );
