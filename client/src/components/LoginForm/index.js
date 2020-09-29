@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import LoginBtn from "../LoginBtn";
 import NewUserBtn from "../NewUserBtn";
 
-let useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: "flex",
@@ -25,21 +25,17 @@ let useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-const username = [userName, setUserName] = useState("");
-const password = [password, setPassword] = useState("");
 
-class LoginForm extends Component {
-  classes = useStyles();
+function LoginForm() {
 
-  constructor(props) {
-    super(props);
-    this.state = { username: '' };
-  }
-  render() {
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+
+
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <div className={classes.paper}>
+        <div className={useStyles.paper}>
           <Typography component="h1" variant="h1">
             Bindr
         </Typography>
@@ -52,7 +48,7 @@ class LoginForm extends Component {
           <br></br>
           <br></br>
           <br></br>
-          <form className={classes.form}>
+          <form className={useStyles.form}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -85,6 +81,6 @@ class LoginForm extends Component {
       </Container>
     );
   }
-}
+
 
 export default LoginForm;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {LoginForm, userName }from '../LoginForm';
 import { AppBar, Toolbar, IconButton, Typography, Container } from '@material-ui/core';
 import { Book, LibraryBooks } from '@material-ui/icons';
 import './styles.css';
@@ -12,7 +11,6 @@ const AppNav = ({ classes, ...props }) => {
 
   function handleClick(path) {
     history.push(path);
-    console.log(userName)
   }
 
   return (
