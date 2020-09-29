@@ -3,7 +3,7 @@ const router = require("express").Router();
 const User = require("../../models/user");
 
 // Matches with "/api/user/"
-router.get('/', function({ body }, res) {
+router.put('/', function({ body }, res) {
   User.find({
     username: body.username,
     password: body.password
@@ -12,6 +12,7 @@ router.get('/', function({ body }, res) {
     if(!data.length) res.json("username doesnt exist");
     else {
       res.json(data);
+      // redirect to home page 
     };
   })
   .catch(err => res.status(400).json(err));
@@ -26,7 +27,6 @@ router.post("/add", function(req, res) {
   newUser.save()
     .then(() => res.json('User added!'))
     .catch(err => res.status(400).json(err));
-  
 });
 
 module.exports = router;

@@ -10,11 +10,12 @@ function NewUserBtn(props) {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    fetch("/add", {
+    fetch("/api/user/add", {
       method: "post",
+      headers:{'content-type': 'application/json'},
       body: JSON.stringify({
-        username,
-        password,
+        username: username,
+        password: password,
       }),
     }).then(function (response) {
       return response.json();

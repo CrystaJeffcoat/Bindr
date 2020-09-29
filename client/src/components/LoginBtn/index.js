@@ -4,28 +4,26 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
 function LoginBtn(props) {
-  let history = useHistory();
-  let username = props.userName;
-  let password = props.password;
+  const history = useHistory();
+  const username = props.userName;
+  const password = props.password;
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    fetch("/", {
-      method: "put", //cannot be a get request with body
+    fetch("/api/user/", {
+      method: "put",
+      headers:{'content-type': 'application/json'},
       body: JSON.stringify({
-        username,
-        password,
+        username: username,
+        password: password,
       }),
     }).then(function (response) {
       return response.json();
     });
 
-    // method: get cannot have "body"
-    // should use axios/API.getUser ?
-    // what do we want this to actually send the user to?
-
     history.push("/home");
   }
+
   const classes = makeStyles((theme) => ({
     submit: {
       margin: theme.spacing(3, 0, 2),
