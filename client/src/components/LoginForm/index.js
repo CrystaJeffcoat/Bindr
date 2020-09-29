@@ -74,8 +74,9 @@ function LoginForm() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </form>
-          <LoginBtn userName={userName} password={password} />
           <br></br>
+          <LoginBtn userName={userName} password={password} />
+          <br></br><br></br>
           <NewUserBtn userName={userName} password={password} />
         </div>
       </Container>
