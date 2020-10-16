@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import LoginBtn from "../LoginBtn";
 import NewUserBtn from "../NewUserBtn";
+import './style.css';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
